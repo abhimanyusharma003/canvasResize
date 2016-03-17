@@ -79,10 +79,11 @@ var EXIF = (function() {
         0xA40A: "Sharpness", // Direction of sharpness processing applied by camera
         0xA40B: "DeviceSettingDescription", // 
         0xA40C: "SubjectDistanceRange", // Distance to subject
+        0xA434: "Lens", // Lens used in camera
 
         // other tags
         0xA005: "InteroperabilityIFDPointer",
-        0xA420: "ImageUniqueID"		// Identifier assigned uniquely to each image
+        0xA420: "ImageUniqueID"     // Identifier assigned uniquely to each image
     };
 
     var TiffTags = {
@@ -425,7 +426,7 @@ var EXIF = (function() {
                     return vals;
                 }
 
-            case 5:	// rational = two long values, first is numerator, second is denominator
+            case 5: // rational = two long values, first is numerator, second is denominator
                 if (numValues == 1) {
                     numerator = file.getLongAt(valueOffset, bigEnd);
                     denominator = file.getLongAt(valueOffset + 4, bigEnd);
